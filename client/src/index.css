@@ -1,0 +1,158 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #0b0f14;
+  --color-panel: #10161e;
+  --color-panel-2: #161f2a;
+  --color-panel-3: #1b2633;
+  --color-border: #24313f;
+  --color-text: #e6edf3;
+  --color-muted: #8a9bad;
+  --color-accent: #6ea8fe;
+  --color-accent-strong: #3b82f6;
+  --color-user: #2563eb;
+  --color-danger: #f87171;
+
+  --breakpoint-chat: 821px;
+
+  --animate-blink: blink 1s steps(2, start) infinite;
+  --animate-dot: dot-bounce 1.2s ease-in-out infinite;
+  --animate-soft-pulse: soft-pulse 1.4s ease-in-out infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes dot-bounce {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.45;
+    }
+    30% {
+      transform: translateY(-4px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes soft-pulse {
+    50% {
+      opacity: 0.45;
+    }
+  }
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    @apply m-0 h-full;
+  }
+
+  body {
+    @apply bg-bg font-sans text-text antialiased;
+  }
+
+  button,
+  textarea {
+    font-family: inherit;
+  }
+
+  ::-webkit-scrollbar {
+    @apply h-2.5 w-2.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full border-2 border-transparent bg-[#2a3848] [background-clip:padding-box];
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#35475c] [background-clip:padding-box];
+  }
+}
+
+@layer components {
+  .markdown > :first-child {
+    @apply mt-0;
+  }
+
+  .markdown > :last-child {
+    @apply mb-0;
+  }
+
+  .markdown p {
+    @apply mt-0 mb-2.5;
+  }
+
+  .markdown h1,
+  .markdown h2,
+  .markdown h3,
+  .markdown h4 {
+    @apply mt-[18px] mb-2 leading-[1.3];
+  }
+
+  .markdown h1 {
+    @apply text-[1.3em];
+  }
+
+  .markdown h2 {
+    @apply text-[1.18em];
+  }
+
+  .markdown h3 {
+    @apply text-[1.05em];
+  }
+
+  .markdown ul,
+  .markdown ol {
+    @apply my-2 pl-[22px];
+  }
+
+  .markdown li {
+    @apply my-[3px];
+  }
+
+  .markdown a {
+    @apply text-accent;
+  }
+
+  .markdown code {
+    @apply rounded-[5px] bg-accent/[0.12] px-[5px] py-[2px] font-mono text-[0.88em];
+  }
+
+  .markdown pre {
+    @apply my-2.5 overflow-x-auto rounded-[10px] border border-border bg-[#0a0e14] px-3.5 py-[13px];
+  }
+
+  .markdown pre code {
+    @apply bg-transparent p-0 font-mono text-[13px] leading-[1.55];
+  }
+
+  .markdown blockquote {
+    @apply my-2.5 border-l-[3px] border-border py-1 pl-3.5 text-muted;
+  }
+
+  .markdown table {
+    @apply my-3 w-full border-collapse text-[13.5px];
+  }
+
+  .markdown th,
+  .markdown td {
+    @apply border border-border px-2.5 py-[7px] text-left;
+  }
+
+  .markdown th {
+    @apply bg-panel-3;
+  }
+
+  .markdown hr {
+    @apply my-4 border-0 border-t border-border;
+  }
+}
